@@ -19,17 +19,15 @@ emailuser = Login(server = 'mail.messagingengine.com',
 
 gmail = Login(server = 'imap.gmail.com',
               user   = 'chad@glendenin.com',
-              folder = 'chilug',
+              folder = 'fm-sent-2003',
               name   = 'gmail')
 
 fastmail = Login(server = 'mail.messagingengine.com',
                  user   = 'chadg@fastmail.fm',
-                 folder = 'INBOX.chilug',
+                 folder = 'INBOX.sent-mail-old.2003',
                  name   = 'fastmail')
 
 login = gmail
-f = open(login.name + '.txt', 'w')
-#print >>f, login.folder
 
 print login.name, login.user, 'login...'
 m = imaplib.IMAP4_SSL(login.server, login.port)
@@ -55,6 +53,9 @@ def getField(regex, FieldName, str):
         return FieldName + ": <EMPTY>"
     else:
         return x.group(0).rstrip()
+
+f = open(login.name + '.txt', 'w')
+#print >>f, login.folder
 
 for id in idList[0].split(' '):
     typ,data = m.fetch(id, '(RFC822.HEADER)')
