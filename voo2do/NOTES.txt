@@ -1,0 +1,8 @@
+links:
+
+Python vs. Java - HTTP GET Request Complexity
+http://coreygoldberg.blogspot.com/2008/09/python-vs-java-http-get-request.html
+
+Make Yahoo! Web Service REST calls with Python
+http://developer.yahoo.com/python/python-rest.html
+
