@@ -1,3 +1,10 @@
+Don't forget to turn on USB Debugging on phone!
+
+Solution: G1 --> Home --> Menu --> Settings --> Applications --> Development
+--> USB debugging
+
+----
+
 Problem: ./adb says file not found even when it's clearly right there.
 
 Cause: adb is a 32-bit binary, but I'm running a 64-bit Ubuntu.
