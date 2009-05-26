@@ -1,0 +1,27 @@
+Problem: ./adb says file not found even when it's clearly right there.
+
+Cause: adb is a 32-bit binary, but I'm running a 64-bit Ubuntu.
+
+Solution: sudo apt-get install ia32-libs
+
+----
+
+Problem: ./adb shows no devices even with G1 attached.
+
+Solution:
+
+(Plug in G1 if haven't already.)
+
+lsusb to find device id
+(mine says "Bus 007 Device 005: ID 0bb4:0c01 High Tech Computer Corp.")
+
+Fix udev:
+Create /etc/udev/rules.d/50-android.rules with the following line:
+SUBSYSTEM=="usb",SYSFS(idVendor)=="0bb4",MODE="0666"
+
+Instructions came from here:
+http://bradchow.wordpress.com/2009/02/16/adb-on-windows-and-ubuntu-linux/
+...but they're incorrect about chmod. udev files don't need x bit set.
+
+Restart udev for changes to take effect:
+sudo /etc/init.d/udev restart
