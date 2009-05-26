@@ -1,3 +1,16 @@
+TetherBot here:
+
+http://graha.ms/androidproxy/
+
+Android app package:
+http://graha.ms/androidproxy/Tetherbot.apk
+(Need to click from phone's browser to install. Also need to enable
+installation from untrusted sources.)
+
+(Might be able to do 'adb install Tetherbot.apk' but I haven't tried that.)
+
+----
+
 Don't forget to turn on USB Debugging on phone!
 
 Solution: G1 --> Home --> Menu --> Settings --> Applications --> Development
@@ -32,3 +45,21 @@ http://bradchow.wordpress.com/2009/02/16/adb-on-windows-and-ubuntu-linux/
 
 Restart udev for changes to take effect:
 sudo /etc/init.d/udev restart
+
+----
+
+SSH'ing to remote server:
+
+Start tetherbot on phone
+Set IP and port (if necessary) (lrz2: 75.127.96.6)
+$ adb forward tcp:4444 localabstract:Tunnel
+$ ssh -p 4444 cglendenin@localhost
+
+----
+
+Connecting to the web via proxy:
+
+Start tetherbot's socks proxy
+$ adb forward tcp:1080 tcp:1080
+set firefox proxy: socks hosts: localhost port: 1080
+
